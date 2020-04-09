@@ -7,7 +7,7 @@ class User
     private $_nom = "Inconnu";
     private $_mdp = "Inconnu";
 
-    public function __construct($_POST,$login, $mdp, $nom, $age)
+    public function __construct($login, $mdp, $nom, $age)
     {
         $this->_nom = $nom;
         $this->_age = $age;
@@ -49,10 +49,10 @@ class User
 
     public function connect()
     {
-        echo "connexion";
+        return true;
     }
     public function deconnect()
     {
-        echo "deconnexion";
+        return true;
     }
 }
