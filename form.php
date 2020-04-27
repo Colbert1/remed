@@ -3,7 +3,7 @@
 <?php
 $connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');
 ?>
-<form name="inscription" method="post" action="post.php">
+<form name="inscription" method="post" action="form.php">
     Entre ton login : <input type="text" name="login" />
     Entre ton mdp : <input type="text" name="mdp" />
     Entre ton nom : <input type="text" name="nom" />
