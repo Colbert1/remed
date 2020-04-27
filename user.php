@@ -48,8 +48,10 @@ class User
     }
 
     public function connect()
-    {
+    {   
         return true;
+        $connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');
+        $requete = $connect->prepare('SELECT `nom`, `mdp`, `age`, `login` FROM `remed`');
     }
     public function deconnect()
     {
