@@ -1,5 +1,5 @@
 <?php require("user.php"); ?>
-<?php session_start();?>
+<?php session_start(); ?>
 <?php
 $connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');
 ?>
@@ -19,10 +19,12 @@ if (isset($_POST['valider'])) {
     echo $User1->getAge() . '<p>';
     if ($User1->connect()) {
         echo "Connecté";
-    } else(empty($_SESSION['login']) && empty($_SESSION['nom']) && empty($_SESSION['mdp']) && empty($_SESSION['age'])) {
+    } else //(empty($_POST['login']) && empty($_POST['nom']) && empty($_POST['mdp']) && empty($_POST['age']))
+    {
         echo "Pas Connecté";
     }
 }
 
 
 ?>
+
