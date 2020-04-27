@@ -6,6 +6,8 @@ class User
     private $_login = "Inconnu";
     private $_nom = "Inconnu";
     private $_mdp = "Inconnu";
+    private $_connect; //j'ai déplacé le pdo comme vous avez dis ->
+
 
     public function __construct($login, $mdp, $nom, $age)
     {
@@ -13,6 +15,7 @@ class User
         $this->_age = $age;
         $this->_login = $login;
         $this->_mdp = $mdp;
+        $this->_connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');// ici
     }
     public function getNom()
     {
@@ -48,13 +51,12 @@ class User
     }
 
     public function connect()
-    {   
-        return true;
-        $connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');
-        $requete = $connect->prepare('SELECT `nom`, `mdp`, `age`, `login` FROM `remed`');
+    {
+
+        $requete = _connect->query('SELECT * FROM `remed` WHERE `nom`, `mdp`, `age`, `login`'); // l'appel n'a pas l'air de fonctionner
     }
     public function deconnect()
     {
-        return true;
+        echo '<form action="deco.php"><input type="submit"></form>'; // j'ai essayé de mettre le bouton de deco dans la fonction 
     }
 }

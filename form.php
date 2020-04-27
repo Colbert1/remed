@@ -19,12 +19,14 @@ if (isset($_POST['valider'])) {
     echo $User1->getAge() . '<p>';
     if ($User1->connect()) {
         echo "Connecté";
-    } else //(empty($_POST['login']) && empty($_POST['nom']) && empty($_POST['mdp']) && empty($_POST['age']))
+    } else //(empty($_SESSION['login']) && empty($_SESSION['nom']) && empty($_SESSION['mdp']) && empty($_SESSION['age']))
     {
-        echo "Pas Connecté";
+        echo "Erreur";
+    }
+    if ($User1->connect()) {
+        $User1->deconnect();
     }
 }
 
 
 ?>
-
