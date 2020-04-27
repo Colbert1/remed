@@ -1,4 +1,5 @@
 <?php require("user.php"); ?>
+<?php session_start();?>
 <?php
 $connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');
 ?>
