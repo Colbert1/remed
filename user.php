@@ -15,7 +15,7 @@ class User
         $this->_age = $age;
         $this->_login = $login;
         $this->_mdp = $mdp;
-        $this->_connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', '');// ici
+        $this->_connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root', ''); //-> ici
     }
     public function getNom()
     {
@@ -50,13 +50,12 @@ class User
         $this->_mdp = $newMdp;
     }
 
-    public function connect()
+    public function connect($login, $mdp)
     {
 
-        $requete = _connect->query('SELECT * FROM `remed` WHERE `nom`, `mdp`, `age`, `login`'); // l'appel n'a pas l'air de fonctionner
+        $requete = ("SELECT * FROM remed WHERE login = '" . $login . "' AND mdp = '" . $mdp . "'");
     }
     public function deconnect()
     {
-        echo '<form action="deco.php"><input type="submit"></form>'; // j'ai essayé de mettre le bouton de deco dans la fonction 
     }
 }

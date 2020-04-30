@@ -12,21 +12,23 @@ $connect = new PDO('mysql:host=localhost;dbname=remediation;charset=utf8', 'root
 </form>
 <?php
 if (isset($_POST['valider'])) {
-    $User1 = new User($_POST['login'], $_POST['nom'], $_POST['mdp'], $_POST['age']);
-    echo $User1->getLogin() . '<p>';
-    echo $User1->getNom() . '<p>';
-    echo $User1->getMdp() . '<p>';
-    echo $User1->getAge() . '<p>';
-    if ($User1->connect()) {
-        echo "Connecté";
-    } else //(empty($_SESSION['login']) && empty($_SESSION['nom']) && empty($_SESSION['mdp']) && empty($_SESSION['age']))
-    {
-        echo "Erreur";
-    }
-    if ($User1->connect()) {
-        $User1->deconnect();
+    if (empty($_POST['login'])) {
+        echo "Login est vide.";
+    } else {
+        if (empty($_POST['mdp'])) {
+            echo "Mot de passe est vide.";
+        } else {
+            $login = ($_POST['login']);
+            $mdp = ($_POST['mdp']);
+            $_SESSION['login'] = $login;
+            echo "Vous êtes connecté !    ";
+            $User1 = new User($_POST['login'], $_POST['nom'], $_POST['mdp'], $_POST['age']);
+            echo $User1->getLogin() . '<p>';
+            echo $User1->getNom() . '<p>';
+            echo $User1->getMdp() . '<p>';
+            echo $User1->getAge() . '<p>';
+        }
     }
 }
-
-
+// il me manque juste la fonction deconnect a voir et logiquement ça sera bon
 ?>
